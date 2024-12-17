@@ -1,10 +1,14 @@
 const mongoosse = require('mongoose');
-mongoosse.connect("mongodb://127.0.0.1:27017/CrownBag")
+const config = require('config'); // config module
+const debug = require('debug')('development:mongoose'); // debug module
+
+
+mongoosse.connect(`${config.get("MONGODB_URI")}/CrownCarry`)
 .then(() => {
-    console.log("Database connected");
+    debug("Connected"); 
 })
 .catch((err)=>{
-    log.console(err);
+    debug(err);
 })
 
 module.exports = mongoosse.connection;

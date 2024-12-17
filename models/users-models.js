@@ -1,8 +1,6 @@
-const mongoosse = require("mongoose");
+const mongoose = require("mongoose");
 
-
-
-const userSchema = mongoosse.Schema({
+const userSchema = mongoose.Schema({
   fullname: {
     type: String,
     minLength: 3,
@@ -10,17 +8,18 @@ const userSchema = mongoosse.Schema({
   },
   email: String,
   password: String,
-  cart: {
-    type: Array,
-    default: [],
-  },
-  isAdmin: Boolean,
+  cart: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "product",
+    },
+  ],
   order: {
     type: Array,
     default: [],
   },
   contact: Number,
-  pictrue: String,
+  picture: Buffer, // Consider correcting "pictrue" to "picture" if it's a typo
 });
 
-module.exports = mongoosse.model("user", userSchema);
+module.exports = mongoose.model("user", userSchema);

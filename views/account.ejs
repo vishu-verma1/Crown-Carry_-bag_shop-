@@ -1,0 +1,90 @@
+<%- include('./partials/header') %>
+
+<div class="min-h-screen bg-gray-100 py-10 px-6">
+    <!-- Main Container -->
+    <div class="max-w-5xl mx-auto bg-white rounded-lg shadow-lg">
+        <!-- Header Section -->
+        <div class="bg-[#213555] p-6 rounded-t-lg text-white">
+            <h1 class="text-3xl font-semibold">My Account</h1>
+            <p class="mt-2">Welcome, <%= user.fullname %></p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="p-6 space-y-10">
+            <!-- User Information -->
+            <div class="flex gap-6 items-center">
+                <div class="w-20 h-20 rounded-full  overflow-hidden">
+                    <% if (user.pictrue) { %>
+                        <img class="w-full h-full object-cover" src="<%= user.pictrue %>" alt="Profile Picture">
+                    <% } else { %>
+                        <img class="w-full h-full object-cover" src="../public/images/default.png" alt="Default Avatar">
+                    <% } %>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold"><%= user.fullname %></h3>
+                    <p class="text-gray-500"><%= user.email %></p>
+                    <p class="text-gray-500">Contact: <%= user.contact || 'N/A' %></p>
+                </div>
+            </div>
+
+            <!-- Account Actions -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <a href="/orders" class="flex items-center justify-between p-4 bg-[#3E5879] text-white rounded-lg shadow-md hover:shadow-lg transition">
+                    <div>
+                        <h4 class="text-lg font-semibold">My Orders</h4>
+                        <p class="text-sm">View and manage your orders</p>
+                    </div>
+                    <i class="ri-shopping-cart-line text-2xl"></i>
+                </a>
+                <a href="/edit-profile" class="flex items-center justify-between p-4 bg-[#3E5879] text-white rounded-lg shadow-md hover:shadow-lg transition">
+                    <div>
+                        <h4 class="text-lg font-semibold">Edit Profile</h4>
+                        <p class="text-sm">Update your personal information</p>
+                    </div>
+                    <i class="ri-user-settings-line text-2xl"></i>
+                </a>
+                <a href="/cart" class="flex items-center justify-between p-4 bg-[#3E5879] text-white rounded-lg shadow-md hover:shadow-lg transition">
+                    <div>
+                        <h4 class="text-lg font-semibold">My Cart</h4>
+                        <p class="text-sm">View items in your cart</p>
+                    </div>
+                    <i class="ri-shopping-bag-line text-2xl"></i>
+                </a>
+                <a href="/logout" class="flex items-center justify-between p-4 bg-[#3E5879] text-white rounded-lg shadow-md hover:shadow-lg transition">
+                    <div>
+                        <h4 class="text-lg font-semibold">Logout</h4>
+                        <p class="text-sm">Sign out of your account</p>
+                    </div>
+                    <i class="ri-logout-box-line text-2xl"></i>
+                </a>
+            </div>
+
+            <!-- Cart Items -->
+            <% if (user.cart.length > 0) { %>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4">My Cart</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <% user.cart.forEach(function(product) { %>
+                            <div class="bg-white border rounded-lg shadow-md p-4">
+                                <div class="h-40 bg-gray-100 flex items-center justify-center">
+                                    <img class="h-28" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" alt="<%= product.name %>">
+                                </div>
+                                <h4 class="mt-4 font-semibold"><%= product.name %></h4>
+                                <p class="text-gray-500">Price: ₹ <%= product.price %></p>
+                                <p class="text-gray-500">Discount: ₹ <%= product.discount %></p>
+                                <a href="/removefromcart/<%= product._id %>" class="text-red-500 mt-2 block">Remove</a>
+                            </div>
+                        <% }); %>
+                    </div>
+                </div>
+            <% } else { %>
+                <div class="text-center">
+                    <p class="text-gray-500">Your cart is empty. Start shopping now!</p>
+                    <a href="/shop" class="mt-4 inline-block px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Shop Now</a>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<%- include('./partials/footer') %>
