@@ -30,7 +30,7 @@ Crown Carry is a feature-rich e-commerce platform built for selling premium bags
 ## Screenshots
 
 ### Landing Page
-![Landing Page](./screenshots/Screenshot1.png)
+![Landing Page](/Screenshot 2024-12-23 223233.png)
 
 ### Product Catalog
 ![Product Catalog](./screenshots/Screenshot2.png)
