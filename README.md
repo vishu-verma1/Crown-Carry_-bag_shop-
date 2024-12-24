@@ -27,16 +27,6 @@ Crown Carry is a feature-rich e-commerce platform built for selling premium bags
 5. **Responsive UI**:
    - Built with Tailwind CSS for modern and responsive design.
 
-## Screenshots
-
-### Landing Page
-![Landing Page](/Screenshot 2024-12-23 223233.png)
-
-### Product Catalog
-![Product Catalog](./screenshots/Screenshot2.png)
-
-### User Dashboard
-![User Dashboard](./screenshots/Screenshot3.png)
 
 ## Tech Stack
 
