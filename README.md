@@ -45,7 +45,7 @@ Crown Carry is a feature-rich e-commerce platform built for selling premium bags
 
 - **Backend**: Node.js, Express.js
 - **Frontend**: EJS (Embedded JavaScript Templates), Tailwind CSS
-- **Database**: [Specify the database, e.g., MongoDB, MySQL, etc.]
+- **Database**: [MongoDB Database]
 
 ## Installation and Setup
 
