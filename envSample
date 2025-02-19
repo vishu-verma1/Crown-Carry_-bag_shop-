@@ -1,0 +1,5 @@
+JWT_KEY= kk
+EXPRESS_SESSION_SECRET=ajjf
+ENV=development
+MONGODB_URI=
+
